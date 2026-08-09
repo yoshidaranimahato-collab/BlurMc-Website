@@ -1,1 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Staff Apply | BlurMc</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Blur</span>Mc
+    </div>
+
+    <nav id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="rules.html">Rules</a>
+        <a href="staff.html">Staff Apply</a>
+        <a href="#">Vote</a>
+        <a href="#">Store</a>
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="login.html" class="login-btn">
+            Login
+        </a>
+
+        <a href="register.html" class="register-btn">
+            Register
+        </a>
+
+    </div>
+
+    <button class="menu-btn">
+        ☰
+    </button>
+
+</header>
+
+
+<main class="staff-page">
+
+    <!-- HERO -->
+
+    <section class="staff-hero">
+
+        <div class="staff-hero-content">
+
+            <span class="staff-label">
+                BLURMC STAFF TEAM
+            </span>
+
+            <h1>
+                Staff Application
+            </h1>
+
+            <p>
+                Think you have what it takes to help
+                build the BlurMc community?
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPLICATION -->
+
+    <section class="staff-section">
+
+        <!-- NOT LOGGED IN -->
+
+        <div
+            id="loginRequired"
+            class="staff-notice"
+            style="display:none;"
+        >
+
+            <div class="notice-icon">
+                🔐
+            </div>
+
+            <div>
+
+                <h2>
+                    Login Required
+                </h2>
+
+                <p>
+                    You must be logged into your
+                    BlurMc account before submitting
+                    a staff application.
+                </p>
+
+                <a
+                    href="login.html"
+                    class="staff-action"
+                >
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATION STATUS -->
+
+        <div
+            id="applicationStatus"
+            class="staff-notice"
+            style="display:none;"
+        >
+
+            <div
+                id="statusIcon"
+                class="notice-icon"
+            >
+                ⏳
+            </div>
+
+            <div>
+
+                <span
+                    id="statusLabel"
+                    class="status-label"
+                >
+                    APPLICATION STATUS
+                </span>
+
+                <h2 id="statusTitle">
+                    Application Pending
+                </h2>
+
+                <p id="statusText">
+                    Please wait until the staff team
+                    accepts or denies your application.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATION FORM -->
+
+        <div
+            id="applicationContainer"
+            class="staff-form-box"
+            style="display:none;"
+        >
+
+            <div class="staff-form-header">
+
+                <span>
+                    JOIN THE TEAM
+                </span>
+
+                <h2>
+                    Tell us about yourself
+                </h2>
+
+                <p>
+                    Please answer every question honestly.
+                    Providing false information may result
+                    in your application being denied.
+                </p>
+
+            </div>
+
+
+            <form id="staffForm">
+
+
+                <!-- USERNAME -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Minecraft Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="minecraftUsername"
+                        maxlength="16"
+                        required
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        id="age"
+                        min="10"
+                        max="100"
+                        placeholder="Example: 16"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- COUNTRY -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Country
+                    </label>
+
+                    <input
+                        type="text"
+                        id="country"
+                        placeholder="Example: India"
+                        maxlength="50"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TIME -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Available Time
+                    </label>
+
+                    <input
+                        type="text"
+                        id="availableTime"
+                        placeholder="Example: 5 PM - 10 PM IST"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SERVER -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Preferred Server / Gamemode
+                    </label>
+
+                    <input
+                        type="text"
+                        id="preferredServer"
+                        placeholder="Example: Survival / Lifesteal"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EXPERIENCE -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Previous Staff Experience
+                    </label>
+
+                    <textarea
+                        id="experience"
+                        rows="5"
+                        maxlength="1500"
+                        placeholder="Tell us about your previous experience..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- WHY STAFF -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Why do you want to become Staff?
+                    </label>
+
+                    <textarea
+                        id="reason"
+                        rows="5"
+                        maxlength="1500"
+                        placeholder="Tell us why you want to join the staff team..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- ABOUT -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Tell us about yourself
+                    </label>
+
+                    <textarea
+                        id="about"
+                        rows="7"
+                        maxlength="3000"
+                        placeholder="Write about yourself..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- CHOOSE -->
+
+                <div class="staff-input">
+
+                    <label>
+                        Why should we choose you?
+                    </label>
+
+                    <textarea
+                        id="whyChoose"
+                        rows="5"
+                        maxlength="1500"
+                        placeholder="Tell us what makes you suitable..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="submitStaff"
+                    class="staff-submit"
+                >
+                    Submit Application
+                </button>
+
+            </form>
+
+
+            <div
+                id="staffMessage"
+                class="staff-message"
+            ></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Blur<span>Mc</span>
+    </div>
+
+    <p>
+        © 2026 BlurMc Network. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="rules.html">
+            Rules
+        </a>
+
+        <a href="staff.html">
+            Staff Apply
+        </a>
+
+    </div>
+
+</footer>
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+    "https://uunmqbthiyyipgnjayry.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_Z_Bal3Jr5D8NepOFge2quQ_qBsqJaWF";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const loginRequired =
+    document.getElementById(
+        "loginRequired"
+    );
+
+const applicationStatus =
+    document.getElementById(
+        "applicationStatus"
+    );
+
+const applicationContainer =
+    document.getElementById(
+        "applicationContainer"
+    );
+
+const minecraftUsername =
+    document.getElementById(
+        "minecraftUsername"
+    );
+
+
+/* =========================================
+   LOAD PAGE
+========================================= */
+
+async function loadStaffPage() {
+
+    const {
+        data: {
+            session
+        }
+    } = await supabaseClient.auth
+        .getSession();
+
+
+    /* ================================
+       NOT LOGGED IN
+    ================================= */
+
+    if (!session) {
+
+        loginRequired.style.display =
+            "flex";
+
+        return;
+
+    }
+
+
+    /* ================================
+       GET PROFILE
+    ================================= */
+
+    const {
+        data: profile,
+        error: profileError
+    } = await supabaseClient
+        .from("profiles")
+        .select("username")
+        .eq("id", session.user.id)
+        .single();
+
+
+    if (profileError) {
+
+        console.error(profileError);
+
+        return;
+
+    }
+
+
+    minecraftUsername.value =
+        profile.username;
+
+
+    /* ================================
+       CHECK APPLICATION
+    ================================= */
+
+    const {
+        data: application,
+        error
+    } = await supabaseClient
+        .from("staff_applications")
+        .select("*")
+        .eq("user_id", session.user.id)
+        .order(
+            "created_at",
+            {
+                ascending: false
+            }
+        )
+        .limit(1)
+        .maybeSingle();
+
+
+    if (error) {
+
+        console.error(error);
+
+        /*
+          Table/RLS setup will be done next.
+        */
+
+        applicationContainer.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    /* ================================
+       NO APPLICATION
+    ================================= */
+
+    if (!application) {
+
+        applicationContainer.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    /* ================================
+       SHOW STATUS
+    ================================= */
+
+    applicationStatus.style.display =
+        "flex";
+
+
+    const status =
+        application.status;
+
+
+    if (status === "pending") {
+
+        document.getElementById(
+            "statusIcon"
+        ).textContent = "⏳";
+
+        document.getElementById(
+            "statusTitle"
+        ).textContent =
+            "Application Pending";
+
+        document.getElementById(
+            "statusText"
+        ).textContent =
+            "Your application has been submitted. Please wait until the staff team accepts or denies your application.";
+
+        return;
+
+    }
+
+
+    if (status === "accepted") {
+
+        document.getElementById(
+            "statusIcon"
+        ).textContent = "✅";
+
+        document.getElementById(
+            "statusTitle"
+        ).textContent =
+            "Application Accepted";
+
+        document.getElementById(
+            "statusText"
+        ).textContent =
+            "Congratulations! Your staff application has been accepted.";
+
+        /*
+          Per your requested system,
+          accepted applications will be
+          unlocked for another application.
+        */
+
+        applicationContainer.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    if (status === "denied") {
+
+        document.getElementById(
+            "statusIcon"
+        ).textContent = "❌";
+
+        document.getElementById(
+            "statusTitle"
+        ).textContent =
+            "Application Denied";
+
+        document.getElementById(
+            "statusText"
+        ).textContent =
+            "Your previous application was denied. You may submit a new application.";
+
+        applicationContainer.style.display =
+            "block";
+
+        return;
+
+    }
+
+}
+
+
+/* =========================================
+   SUBMIT APPLICATION
+========================================= */
+
+document.getElementById(
+    "staffForm"
+).addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const {
+            data: {
+                session
+            }
+        } = await supabaseClient.auth
+            .getSession();
+
+
+        if (!session) {
+
+            return;
+
+        }
+
+
+        const submitButton =
+            document.getElementById(
+                "submitStaff"
+            );
+
+        const message =
+            document.getElementById(
+                "staffMessage"
+            );
+
+
+        submitButton.disabled = true;
+
+        submitButton.textContent =
+            "Submitting...";
+
+
+        try {
+
+            /* ================================
+               CHECK PENDING APPLICATION
+            ================================= */
+
+            const {
+                data: pendingApps,
+                error: pendingError
+            } = await supabaseClient
+                .from("staff_applications")
+                .select("id,status")
+                .eq(
+                    "user_id",
+                    session.user.id
+                )
+                .eq(
+                    "status",
+                    "pending"
+                );
+
+
+            if (pendingError) {
+
+                throw pendingError;
+
+            }
+
+
+            if (
+                pendingApps &&
+                pendingApps.length > 0
+            ) {
+
+                throw new Error(
+                    "You already have a pending application."
+                );
+
+            }
+
+
+            /* ================================
+               INSERT
+            ================================= */
+
+            const {
+                error: insertError
+            } = await supabaseClient
+                .from("staff_applications")
+                .insert({
+
+                    user_id:
+                        session.user.id,
+
+                    username:
+                        minecraftUsername.value,
+
+                    age:
+                        Number(
+                            document.getElementById(
+                                "age"
+                            ).value
+                        ),
+
+                    country:
+                        document.getElementById(
+                            "country"
+                        ).value.trim(),
+
+                    available_time:
+                        document.getElementById(
+                            "availableTime"
+                        ).value.trim(),
+
+                    preferred_server:
+                        document.getElementById(
+                            "preferredServer"
+                        ).value.trim(),
+
+                    experience:
+                        document.getElementById(
+                            "experience"
+                        ).value.trim(),
+
+                    reason:
+                        document.getElementById(
+                            "reason"
+                        ).value.trim(),
+
+                    about:
+                        document.getElementById(
+                            "about"
+                        ).value.trim(),
+
+                    why_choose:
+                        document.getElementById(
+                            "whyChoose"
+                        ).value.trim(),
+
+                    status:
+                        "pending"
+
+                });
+
+
+            if (insertError) {
+
+                throw insertError;
+
+            }
+
+
+            /* ================================
+               SUCCESS
+            ================================= */
+
+            message.textContent =
+                "✅ Your application has been submitted. Please wait until the staff team accepts or denies your application.";
+
+            message.className =
+                "staff-message success";
+
+
+            submitButton.disabled =
+                true;
+
+            submitButton.textContent =
+                "Application Submitted";
+
+
+            setTimeout(() => {
+
+                location.reload();
+
+            }, 1200);
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            message.textContent =
+                error.message ||
+                "Something went wrong. Please try again.";
+
+            message.className =
+                "staff-message error";
+
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Submit Application";
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   START
+========================================= */
+
+loadStaffPage();
+
+</script>
+
+</body>
+
+  </html>
