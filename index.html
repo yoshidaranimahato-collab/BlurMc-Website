@@ -1,1 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>BlurMc | Minecraft Network</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Blur</span>Mc
+    </div>
+
+    <nav id="navMenu">
+
+        <a href="index.html">Home</a>
+        <a href="#">Server</a>
+        <a href="#">Rules</a>
+        <a href="#">Vote</a>
+        <a href="#">Store</a>
+        <a href="#">Discord</a>
+
+    </nav>
+
+    <div class="nav-buttons">
+
+        <a href="#" class="login-btn">Login</a>
+        <a href="#" class="register-btn">Register</a>
+
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="online-badge">
+            <span></span>
+            BlurMc Network Online
+        </div>
+
+        <h1>
+            Welcome to
+            <strong>BlurMc</strong>
+        </h1>
+
+        <p>
+            A new Minecraft experience where you can
+            build, fight, survive and create unforgettable
+            memories with your friends.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="play-btn" onclick="copyIP()">
+                🎮 Play Now
+            </button>
+
+            <a href="#" class="discord-btn">
+                💬 Join Discord
+            </a>
+
+        </div>
+
+        <p id="copyMessage" class="copy-message"></p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVER STATUS ================= -->
+
+<section class="status-section">
+
+    <div class="section-title">
+
+        <small>SERVER STATUS</small>
+
+        <h2>
+            BlurMc is ready for you.
+        </h2>
+
+    </div>
+
+
+    <div class="status-grid">
+
+        <div class="status-card">
+
+            <div class="status-icon">
+                🟢
+            </div>
+
+            <div>
+
+                <h3>Online</h3>
+
+                <p>Server Status</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <div class="status-icon">
+                👥
+            </div>
+
+            <div>
+
+                <h3 id="players">0</h3>
+
+                <p>Players Online</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <div class="status-icon">
+                ⚡
+            </div>
+
+            <div>
+
+                <h3>1.21+</h3>
+
+                <p>Supported Version</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="status-card">
+
+            <div class="status-icon">
+                🟢
+            </div>
+
+            <div>
+
+                <h3>24/7</h3>
+
+                <p>Network Uptime</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about">
+
+    <div class="about-content">
+
+        <small>WHY BLURMC?</small>
+
+        <h2>
+            More than just
+            <span>a server.</span>
+        </h2>
+
+        <p>
+            BlurMc is built for players who want a
+            fun, competitive and friendly Minecraft
+            community.
+        </p>
+
+        <div class="features">
+
+            <div>
+                <b>⚔️</b>
+                <h3>Competitive</h3>
+                <p>Fight and compete with other players.</p>
+            </div>
+
+            <div>
+                <b>🌎</b>
+                <h3>Community</h3>
+                <p>Meet new players and make friends.</p>
+            </div>
+
+            <div>
+                <b>🚀</b>
+                <h3>Performance</h3>
+                <p>Optimized gameplay for a smooth experience.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features-section">
+
+    <div class="section-title">
+
+        <small>EXPLORE BLURMC</small>
+
+        <h2>
+            Everything in one place.
+        </h2>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+        <a href="#" class="feature-card">
+
+            <span>📜</span>
+
+            <h3>Rules</h3>
+
+            <p>
+                Read our server rules and guidelines.
+            </p>
+
+        </a>
+
+
+        <a href="#" class="feature-card">
+
+            <span>🗳️</span>
+
+            <h3>Vote</h3>
+
+            <p>
+                Support BlurMc by voting for our server.
+            </p>
+
+        </a>
+
+
+        <a href="#" class="feature-card">
+
+            <span>🛒</span>
+
+            <h3>Store</h3>
+
+            <p>
+                Purchase ranks and exclusive items.
+            </p>
+
+        </a>
+
+
+        <a href="#" class="feature-card">
+
+            <span>🏆</span>
+
+            <h3>Leaderboard</h3>
+
+            <p>
+                See the best players on BlurMc.
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= DISCORD ================= -->
+
+<section class="discord-section">
+
+    <div>
+
+        <small>JOIN THE COMMUNITY</small>
+
+        <h2>
+            Become part of BlurMc.
+        </h2>
+
+        <p>
+            Join our Discord server to get announcements,
+            updates, events and support.
+        </p>
+
+        <a href="#" class="discord-large">
+            Join Discord →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        Blur<span>Mc</span>
+    </div>
+
+    <p>
+        © 2026 BlurMc Network. All rights reserved.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="#">Discord</a>
+        <a href="#">Rules</a>
+        <a href="#">Store</a>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+          </html>
