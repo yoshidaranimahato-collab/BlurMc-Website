@@ -1,1 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Register | BlurMc</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span>Blur</span>Mc
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="rules.html">Rules</a>
+        <a href="#">Vote</a>
+        <a href="#">Store</a>
+    </nav>
+
+</header>
+
+
+<main class="auth-page">
+
+    <div class="auth-box">
+
+        <div class="auth-logo">
+            Blur<span>Mc</span>
+        </div>
+
+        <h1>Create Account</h1>
+
+        <p class="auth-description">
+            Create your BlurMc account and join the community.
+        </p>
+
+
+        <form id="registerForm">
+
+            <div class="input-group">
+
+                <label for="username">
+                    Minecraft Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Example: Raju"
+                    minlength="3"
+                    maxlength="16"
+                    pattern="[A-Za-z0-9_]+"
+                    autocomplete="username"
+                    required
+                >
+
+                <small>
+                    3-16 characters. Letters, numbers and _ only.
+                </small>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    minlength="6"
+                    autocomplete="new-password"
+                    required
+                >
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label for="confirmPassword">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Repeat your password"
+                    minlength="6"
+                    autocomplete="new-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="registerButton"
+                class="auth-button"
+            >
+                Create Account
+            </button>
+
+        </form>
+
+
+        <div
+            id="registerMessage"
+            class="auth-message"
+        ></div>
+
+
+        <p class="auth-footer">
+
+            Already have an account?
+
+            <a href="login.html">
+                Login
+            </a>
+
+        </p>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        Blur<span>Mc</span>
+    </div>
+
+    <p>
+        © 2026 BlurMc Network. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- Supabase -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+/* =========================================
+   SUPABASE CONFIG
+========================================= */
+
+/*
+   IMPORTANT:
+
+   Replace these two values with your
+   Supabase Project URL and Publishable/Anon Key.
+
+   NEVER use your service_role/secret key here.
+*/
+
+const SUPABASE_URL =
+    "https://uunmqbthiyyipgnjayry.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_Z_Bal3Jr5D8NepOFge2quQ_qBsqJaWF";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const registerForm =
+    document.getElementById("registerForm");
+
+const registerButton =
+    document.getElementById("registerButton");
+
+const message =
+    document.getElementById("registerMessage");
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className =
+        "auth-message " + type;
+
+}
+
+
+/* =========================================
+   REGISTER
+========================================= */
+
+registerForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document
+                .getElementById("username")
+                .value
+                .trim();
+
+        const email =
+            document
+                .getElementById("email")
+                .value
+                .trim();
+
+        const password =
+            document
+                .getElementById("password")
+                .value;
+
+        const confirmPassword =
+            document
+                .getElementById("confirmPassword")
+                .value;
+
+
+        /* ================================
+           PASSWORD CHECK
+        ================================= */
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* ================================
+           USERNAME CHECK
+        ================================= */
+
+        const normalizedUsername =
+            username.toLowerCase();
+
+
+        registerButton.disabled = true;
+
+        registerButton.textContent =
+            "Checking username...";
+
+
+        try {
+
+            /*
+              Check username in profiles table.
+
+              This makes Raju / raju / RAJU
+              count as the same username.
+            */
+
+            const {
+                data: existingUsers,
+                error: usernameError
+            } = await supabaseClient
+                .from("profiles")
+                .select("id")
+                .ilike(
+                    "username",
+                    normalizedUsername
+                )
+                .limit(1);
+
+
+            if (usernameError) {
+
+                throw usernameError;
+
+            }
+
+
+            if (
+                existingUsers &&
+                existingUsers.length > 0
+            ) {
+
+                showMessage(
+                    "This Minecraft username is already taken.",
+                    "error"
+                );
+
+                registerButton.disabled = false;
+
+                registerButton.textContent =
+                    "Create Account";
+
+                return;
+
+            }
+
+
+            /* ================================
+               CREATE SUPABASE ACCOUNT
+            ================================= */
+
+            registerButton.textContent =
+                "Creating account...";
+
+
+            const {
+                data,
+                error
+            } = await supabaseClient.auth.signUp({
+
+                email: email,
+
+                password: password
+
+            });
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            if (!data.user) {
+
+                throw new Error(
+                    "Account could not be created."
+                );
+
+            }
+
+
+            /* ================================
+               CREATE PROFILE
+            ================================= */
+
+            const {
+                error: profileError
+            } = await supabaseClient
+                .from("profiles")
+                .insert({
+
+                    id: data.user.id,
+
+                    username: normalizedUsername
+
+                });
+
+
+            if (profileError) {
+
+                /*
+                  If database unique constraint
+                  catches another registration
+                  happening at the same time.
+                */
+
+                if (
+                    profileError.code === "23505"
+                ) {
+
+                    showMessage(
+                        "This username is already taken.",
+                        "error"
+                    );
+
+                } else {
+
+                    throw profileError;
+
+                }
+
+                registerButton.disabled = false;
+
+                registerButton.textContent =
+                    "Create Account";
+
+                return;
+
+            }
+
+
+            /* ================================
+               SUCCESS
+            ================================= */
+
+            showMessage(
+                "Account created successfully! Check your email if verification is enabled.",
+                "success"
+            );
+
+
+            registerForm.reset();
+
+
+            registerButton.disabled = false;
+
+            registerButton.textContent =
+                "Create Account";
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                error.message ||
+                "Registration failed. Please try again.",
+                "error"
+            );
+
+
+            registerButton.disabled = false;
+
+            registerButton.textContent =
+                "Create Account";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+                                                                     </html>
